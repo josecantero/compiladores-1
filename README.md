@@ -3,9 +3,9 @@ compiladores
 
 Compiladores FPUNA
 
-Tp: Analizidador Sintactico
+Tp: Analizidador Lexico
 
 Integrates
 ==========
 1 . José de Jesús Cantero Maciel
-2 . Victor Daniel Rivarola
+2 . Luis Rivarola
