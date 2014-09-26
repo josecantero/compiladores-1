@@ -749,7 +749,7 @@ int main(int argc,char* args[])
 
 	if(argc > 1)
 	{
-		//if (!(archivo=fopen("C:\\Users\\LinkedList\\Desktop\\compiladores\\sem2\\tarea 1\\fuente.txt","rt")))
+		
 		if (!(archivo=fopen(args[1],"rt")))
 		{
 			printf("Archivo no encontrado.\n");
