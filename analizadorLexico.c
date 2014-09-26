@@ -1,3 +1,11 @@
+/*
+	MATERIA : Compiladores y Lenguajes de Bajo Nivel
+	Profesor: Julio Paciel
+	TP      : Analizador Lexico (TP1)
+	ALUMNOS : José de Jesús Cantero Maciel
+			  Luis Rios Rivarola
+*/
+
 /*********** LIbrerias utilizadas **************/
 
 #include<stdio.h>
@@ -39,14 +47,17 @@
 #define LITERAL_NUM			284
 #define ID			285
 #define BOOL		286
+//#define TAB		286
 #define CAR			287
 #define LITERAL_CADENA		288
-#define NOT			289
-#define OP_RELACIONAL		290
-#define OP_SUMA		291
-#define OP_MUL		292
-#define OP_ASIGNACION	293
-#define USER_TYPE	294
+#define DOS_PUNTOS			289
+#define COMA		290
+#define L_LLAVE		291
+#define R_LLAVE		292
+//#define OP_ASIGNACION	293
+#define L_CORCHETE	293
+//#define USER_TYPE	294
+#define R_CORCHETE	294
 // Fin Codigos
 #define TAMBUFF 	5
 #define TAMLEX 		50
@@ -236,32 +247,38 @@ void initTablaSimbolos()
 	{
 		insertTablaSimbolos(vector[i],i+256);
 	}
-	insertTablaSimbolos(",",',');
+	//insertTablaSimbolos(",",',');
 	insertTablaSimbolos(".",'.');
-	insertTablaSimbolos(":",':');
+	//insertTablaSimbolos(":",':');
 	insertTablaSimbolos(";",';');
 	insertTablaSimbolos("(",'(');
 	insertTablaSimbolos(")",')');
-	insertTablaSimbolos("[",'[');
-	insertTablaSimbolos("]",']');
+	//insertTablaSimbolos("[",'[');
+	//insertTablaSimbolos("]",']');
 	insertTablaSimbolos("?",'?');
 	insertTablaSimbolos("true",PR_TRUE);
 	insertTablaSimbolos("false",PR_FALSE);
-	insertTablaSimbolos("not",NOT);
-	insertTablaSimbolos("<",OP_RELACIONAL);
-	insertTablaSimbolos("<=",OP_RELACIONAL);
-	insertTablaSimbolos("<>",OP_RELACIONAL);
-	insertTablaSimbolos(">",OP_RELACIONAL);
-	insertTablaSimbolos(">=",OP_RELACIONAL);
-	insertTablaSimbolos("=",OP_ASIGNACION);
-	insertTablaSimbolos("+",OP_SUMA);
-	insertTablaSimbolos("-",OP_SUMA);
-	insertTablaSimbolos("or",OP_SUMA);
-	insertTablaSimbolos("*",OP_MUL);
-	insertTablaSimbolos("/",OP_MUL);
-	insertTablaSimbolos("div",OP_MUL);
-	insertTablaSimbolos("mod",OP_MUL);
-	insertTablaSimbolos(":=",OP_ASIGNACION);
+	///insertTablaSimbolos("not",NOT);
+	insertTablaSimbolos(":",DOS_PUNTOS);
+	insertTablaSimbolos(",",COMA);
+	//insertTablaSimbolos("<",OP_RELACIONAL);
+	//insertTablaSimbolos("<=",OP_RELACIONAL);
+	//insertTablaSimbolos("<>",OP_RELACIONAL);
+	//insertTablaSimbolos(">",OP_RELACIONAL);
+	//insertTablaSimbolos(">=",OP_RELACIONAL);
+	//insertTablaSimbolos("=",OP_ASIGNACION);
+	//insertTablaSimbolos("+",OP_SUMA);
+	insertTablaSimbolos("{",L_LLAVE);
+	//insertTablaSimbolos("-",OP_SUMA);
+	//insertTablaSimbolos("or",OP_SUMA);
+	//insertTablaSimbolos("*",OP_MUL);
+	insertTablaSimbolos("}",R_LLAVE);
+	insertTablaSimbolos("[",L_CORCHETE);
+	insertTablaSimbolos("]",R_CORCHETE);
+	//insertTablaSimbolos("/",OP_MUL);
+	//insertTablaSimbolos("div",OP_MUL);
+	//insertTablaSimbolos("mod",OP_MUL);
+	///insertTablaSimbolos(":=",OP_ASIGNACION);
 }
 
 // Rutinas del analizador lexico
@@ -283,8 +300,13 @@ void sigLex()
 	while((c=fgetc(archivo))!=EOF)
 	{
 
-		if (c==' ' || c=='\t')
+		if (c==' ' || c=='\t'){
 			continue;	//eliminar espacios en blanco
+			sprintf(t.compLex,"\t");
+			//incrementar el numero de linea
+			//numLinea++;
+			break;
+		}
 		/*else if(c=='#'){
 			if(c=fgetc(archivo) == '#'){
                  //numLinea++;
@@ -727,6 +749,7 @@ int main(int argc,char* args[])
 
 	if(argc > 1)
 	{
+		//if (!(archivo=fopen("C:\\Users\\LinkedList\\Desktop\\compiladores\\sem2\\tarea 1\\fuente.txt","rt")))
 		if (!(archivo=fopen(args[1],"rt")))
 		{
 			printf("Archivo no encontrado.\n");
@@ -740,12 +763,13 @@ int main(int argc,char* args[])
 			if(strcmp(t.compLex,"TERMINADOR_ENTER")!=0 && bnumlinea == numLinea && strcmp(t.compLex,"EOF")!=0){
 			   
 			     strcat(guardar, t.compLex);
-			     strcat(guardar," ");
-			   
+				 if(strcmp(t.compLex,"\t")!=0){
+					strcat(guardar," ");
+			     }
 
             }
             else{
-                 strcat(guardar, t.compLex);
+                 //strcat(guardar, t.compLex);
                  printf("%s",guardar);
                  fprintf(pf,guardar);
                 
