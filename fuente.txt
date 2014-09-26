@@ -1,22 +1,17 @@
-#
-# Tarea 1 - Compiladores
-# Fuente de ejemplo CoffeeScript
-#
-
-# Assignment:
-val = 1
-
-# Conditions:
-(number = 42 + 10 * 3; alert number) if val < 1
-number = 0 if val > 0
-
-# Functions:
-square = (x) -> x * x 
-cube = (x) -> square(x) * x
-print = (msg) -> alert(msg) if msg?; msg
-
-# Arrays:
-list = [1, 2, 3, 4, 5]
-
-# Existence:
-alert "I knew it!" if elvis?
+[ "data",
+  [ "table",
+    { "id" : "persona" },
+    [ "column",
+      { "id" : "ci" },
+      "1495256"
+    ],
+    [ "column",
+      { "id" : "nombre" },
+      "Juan Perez"
+    ]
+  ],
+  [ "sql",
+    { "id" : "select_all" },
+    "select * from persona order by ci"
+  ]
+]
