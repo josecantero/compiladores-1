@@ -3,7 +3,7 @@ compiladores
 
 Compiladores FPUNA
 
-Tp: Analizidador Lexico
+Tp: Analizidador Lexico.
 
 Integrates
 ==========
