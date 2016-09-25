@@ -1,17 +1,27 @@
-[ "data",
-  [ "table",
-    { "id" : "persona" },
-    [ "column",
-      { "id" : "ci" },
-      "1495256"
-    ],
-    [ "column",
-      { "id" : "nombre" },
-      "Juan Perez"
-    ]
-  ],
-  [ "sql",
-    { "id" : "select_all" },
-    "select * from persona order by ci"
-  ]
-]
+{  
+   "personas":[  
+      {  
+         "ci":1234567,
+         "nombre":"Julio Pérez",
+         "casado":false,
+         "hijos":[  
+
+         ]
+      },
+      {  
+         "ci":7654321,
+         "nombre":"Juan Gómez",
+         "casado":true,
+         "hijos":[  
+            {  
+               "nombre":"Jorge",
+               "edad":18
+            },
+            {  
+               "nombre":"Valeria",
+               "edad":16
+            }
+         ]
+      }
+   ]
+}
