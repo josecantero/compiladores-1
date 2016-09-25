@@ -3,7 +3,6 @@
 	Profesor: Julio Paciel
 	TP      : Analizador Lexico (TP1)
 	ALUMNOS : José de Jesús Cantero Maciel
-			  Luis Rios Rivarola
 */
 
 /*********** LIbrerias utilizadas **************/
